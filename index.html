@@ -1,75 +1,57 @@
 <!doctype html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 	<title>YOUR NAME HERE</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css" id="theme">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
 
 	<link rel="stylesheet" href="css/custom.css">
-
 	<link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
 
-	<!-- Printing and PDF exports -->
-	<script>
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-      document.getElementsByTagName('head')[0].appendChild(link);
-	</script>
 </head>
+
 <body>
-<div class="reveal">
-	<div class="slides">
-		<section data-background="#FFFFFF"><img class="fragment" data-duration="2" data-animate="fadeIn"
-																						src="img/ministry.png"></section>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background="#FFFFFF"><img class="fragment" data-duration="2" data-animate="fadeIn"
+					src="img/ministry.png"></section>
+		</div>
 	</div>
-</div>
 
-		<script src="js/reveal.js"></script>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
 
-<script>
-    // More info about config & dependencies:
-    // - https://github.com/hakimel/reveal.js#configuration
-    // - https://github.com/hakimel/reveal.js#dependencies
-    Reveal.initialize({
-        hash: true,
-        dependencies: [
-            {src: 'plugin/markdown/marked.js'},
-            {src: 'plugin/markdown/markdown.js'},
-            {src: 'plugin/notes/notes.js', async: true},
-            {src: 'plugin/highlight/highlight.js', async: true, callback: waitForHLJS},
-            {src: 'bower_components/jquery/dist/jquery.min.js'},
-            {src: 'js/animations.js'},
-            {src: 'plugin/alt-arrows/alt-arrows.js', async: true},
-            {src: 'plugin/blur-background/blur-background.js'},
-            {src: 'plugin/loader-splashscreen/loader-splashscreen.js'},
-            {src: 'plugin/code-fragment-highlight/code-fragment-highlight.js'},
-            {src: 'plugin/global-fragments/global-fragments.js'}
-
-        ],
-        keyboard: {
-            39: 'next',
-            37: 'prev'
-        }
-    });
-
-    function waitForHLJS() {
-        if (window.hljs) {
-            hljs.initHighlightingOnLoad();
-            return;
-        }
-        console.log('Waiting for hljs');
-        setTimeout(waitForHLJS, 1000);
-    }
-</script>
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+			dependencies: [
+				{ src: 'js/animations.js' },
+				{ src: 'plugin/alt-arrows/alt-arrows.js', async: true },
+				{ src: 'plugin/blur-background/blur-background.js' },
+				{ src: 'plugin/loader-splashscreen/loader-splashscreen.js' },
+			],
+			keyboard: {
+				39: 'next',
+				37: 'prev'
+			}
+		});
+	</script>
 </body>
+
 </html>
