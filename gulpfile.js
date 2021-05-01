@@ -167,7 +167,7 @@ gulp.task('css-themes', () => gulp.src(['./css/theme/source/*.{sass,scss}'])
 gulp.task('css-core', () => gulp.src(['css/reveal.scss'])
     .pipe(sass())
     .pipe(autoprefixer())
-    .pipe(minify({ compatibility: 'ie9' }))
+    .pipe(minify({compatibility: 'ie9'}))
     .pipe(header(banner))
     .pipe(gulp.dest('./dist')))
 
@@ -182,15 +182,15 @@ gulp.task('qunit', () => {
         name: 'test-server'
     }
 
-    let server = connect.server(serverConfig)
+    let server = connect.server( serverConfig )
 
-    let testFiles = glob.sync('test/*.html')
+    let testFiles = glob.sync('test/*.html' )
 
     let totalTests = 0;
     let failingTests = 0;
 
-    let tests = Promise.all(testFiles.map(filename => {
-        return new Promise((resolve, reject) => {
+    let tests = Promise.all( testFiles.map( filename => {
+        return new Promise( ( resolve, reject ) => {
             qunit.runQunitPuppeteer({
                 targetUrl: `http://${serverConfig.host}:${serverConfig.port}/${filename}`,
                 timeout: 20000,
@@ -198,7 +198,7 @@ gulp.task('qunit', () => {
                 puppeteerArgs: ['--allow-file-access-from-files']
             })
                 .then(result => {
-                    if (result.stats.failed > 0) {
+                    if( result.stats.failed > 0 ) {
                         console.log(`${'!'} ${filename} [${result.stats.passed}/${result.stats.total}] in ${result.stats.runtime}ms`.red);
                         // qunit.printResultSummary(result, console);
                         qunit.printFailedTests(result, console);
@@ -216,35 +216,35 @@ gulp.task('qunit', () => {
                     console.error(error);
                     reject();
                 });
-        })
-    }));
+        } )
+    } ) );
 
-    return new Promise((resolve, reject) => {
+    return new Promise( ( resolve, reject ) => {
 
-        tests.then(() => {
-            if (failingTests > 0) {
-                reject(new Error(`${failingTests}/${totalTests} tests failed`.red));
-            }
-            else {
-                console.log(`${'✔'} Passed ${totalTests} tests`.green.bold);
-                resolve();
-            }
-        })
-            .catch(() => {
+        tests.then( () => {
+                if( failingTests > 0 ) {
+                    reject( new Error(`${failingTests}/${totalTests} tests failed`.red) );
+                }
+                else {
+                    console.log(`${'✔'} Passed ${totalTests} tests`.green.bold);
+                    resolve();
+                }
+            } )
+            .catch( () => {
                 reject();
-            })
-            .finally(() => {
+            } )
+            .finally( () => {
                 server.close();
-            });
+            } );
 
-    });
-})
+    } );
+} )
 
 gulp.task('eslint', () => gulp.src(['./js/**', 'gulpfile.js'])
-    .pipe(eslint())
-    .pipe(eslint.format()))
+        .pipe(eslint())
+        .pipe(eslint.format()))
 
-gulp.task('test', gulp.series('eslint', 'qunit'))
+gulp.task('test', gulp.series( 'eslint', 'qunit' ))
 
 gulp.task('default', gulp.series(gulp.parallel('js', 'css', 'plugins'), 'test'))
 
