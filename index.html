@@ -14,7 +14,7 @@
 	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
 
-	<link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" href="dist/custom.css">
 	<link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
 	<link href="font/font.css" rel="stylesheet">
 </head>
@@ -38,7 +38,8 @@
 		// - https://revealjs.com/config/
 		Reveal.initialize({
 			hash: true,
-
+			progress: false,
+			controls: false,
 			// Learn about plugins: https://revealjs.com/plugins/
 			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
 			dependencies: [

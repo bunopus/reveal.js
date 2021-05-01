@@ -5,9 +5,3 @@
     font-weight: normal;
     font-style: normal;
 }
-
-@font-face {
-    font-family: 'missed_glyphs';
-    src: local('Comic Sans MS');
-    unicode-range: U+002C;
-}
