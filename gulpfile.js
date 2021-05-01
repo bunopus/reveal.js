@@ -77,10 +77,10 @@ gulp.task('js-es5', () => {
         plugins: [
             resolve(),
             commonjs(),
-            babel(babelConfig),
+            babel( babelConfig ),
             terser()
         ]
-    }).then(bundle => {
+    }).then( bundle => {
         cache.umd = bundle.cache;
         return bundle.write({
             name: 'Reveal',
@@ -100,10 +100,10 @@ gulp.task('js-es6', () => {
         plugins: [
             resolve(),
             commonjs(),
-            babel(babelConfigESM),
+            babel( babelConfigESM ),
             terser()
         ]
-    }).then(bundle => {
+    }).then( bundle => {
         cache.esm = bundle.cache;
         return bundle.write({
             file: './dist/reveal.esm.js',
@@ -125,35 +125,36 @@ gulp.task('plugins', () => {
         { name: 'RevealNotes', input: './plugin/notes/plugin.js', output: './plugin/notes/notes' },
         { name: 'RevealZoom', input: './plugin/zoom/plugin.js', output: './plugin/zoom/zoom' },
         { name: 'RevealMath', input: './plugin/math/plugin.js', output: './plugin/math/math' },
-    ].map(plugin => {
+    ].map( plugin => {
         return rollup({
-            cache: cache[plugin.input],
-            input: plugin.input,
-            plugins: [
-                resolve(),
-                commonjs(),
-                babel({
-                    ...babelConfig,
-                    ignore: [/node_modules\/(?!(highlight\.js|marked)\/).*/],
-                }),
-                terser()
-            ]
-        }).then(bundle => {
-            cache[plugin.input] = bundle.cache;
-            bundle.write({
-                file: plugin.output + '.esm.js',
-                name: plugin.name,
-                format: 'es'
-            })
+                cache: cache[plugin.input],
+                input: plugin.input,
+                plugins: [
+                    resolve(),
+                    commonjs(),
+                    babel({
+                        ...babelConfig,
+                        ignore: [/node_modules\/(?!(highlight\.js|marked)\/).*/],
+                    }),
+                    terser()
+                ]
+            }).then( bundle => {
+                cache[plugin.input] = bundle.cache;
+                bundle.write({
+                    file: plugin.output + '.esm.js',
+                    name: plugin.name,
+                    format: 'es'
+                })
 
-            bundle.write({
-                file: plugin.output + '.js',
-                name: plugin.name,
-                format: 'umd'
-            })
-        });
-    }));
+                bundle.write({
+                    file: plugin.output + '.js',
+                    name: plugin.name,
+                    format: 'umd'
+                })
+            });
+    } ));
 })
+
 
 gulp.task('css-custom', () => gulp.src(['css/custom.scss'])
     .pipe(sass())
