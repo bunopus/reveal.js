@@ -57,16 +57,14 @@ const babelConfig = {
 // module support. Browsers are targeted explicitly instead
 // of using the "esmodule: true" target since that leads to
 // polyfilling older browsers and a larger bundle.
-const babelConfigESM = JSON.parse(JSON.stringify(babelConfig));
-babelConfigESM.presets[0][1].targets = {
-    browsers: [
-        'last 2 Chrome versions', 'not Chrome < 60',
-        'last 2 Safari versions', 'not Safari < 10.1',
-        'last 2 iOS versions', 'not iOS < 10.3',
-        'last 2 Firefox versions', 'not Firefox < 60',
-        'last 2 Edge versions', 'not Edge < 16',
-    ]
-};
+const babelConfigESM = JSON.parse( JSON.stringify( babelConfig ) );
+babelConfigESM.presets[0][1].targets = { browsers: [
+    'last 2 Chrome versions', 'not Chrome < 60',
+    'last 2 Safari versions', 'not Safari < 10.1',
+    'last 2 iOS versions', 'not iOS < 10.3',
+    'last 2 Firefox versions', 'not Firefox < 60',
+    'last 2 Edge versions', 'not Edge < 16',
+] };
 
 let cache = {};
 
