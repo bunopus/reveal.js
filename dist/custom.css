@@ -1,24 +1,71 @@
 .reveal .alt-color {
-  color: #3f3838; }
-
+  color: #3f3838;
+}
 .reveal section img {
   border: none;
   background: none;
   box-shadow: none;
-  margin: 0; }
-
+  margin: 0;
+}
 .reveal section.scrollable {
   bottom: 0px;
   overflow-y: auto;
-  overflow-x: hidden; }
-
+  overflow-x: hidden;
+}
 .reveal section h1,
 .reveal section h2,
 .reveal section h3,
 .reveal section h4,
 .reveal section h5, .reveal section {
   font-family: papaya_sunriseregular, serif;
-  color: #3f3838; }
+  color: #3f3838;
+}
+.reveal section .accent {
+  color: #b82525;
+}
+.reveal section.title-slide h3 {
+  padding-bottom: 10px;
+}
+.reveal section.title-slide .and {
+  font-size: 1em;
+  padding-bottom: 20px;
+}
+.reveal section.title-slide img {
+  width: 310px;
+}
+.reveal section.has-dark-background h1,
+.reveal section.has-dark-background h2,
+.reveal section.has-dark-background h3,
+.reveal section.has-dark-background h4,
+.reveal section.has-dark-background h5, .reveal section.has-dark-background {
+  color: white;
+}
+.reveal section ul {
+  font-weight: 100;
+  font-size: 0.7em;
+  color: #3f3838;
+  padding-left: 25px;
+  font-family: "papaya_sunriseregular", serif;
+  list-style: none;
+}
+.reveal section ul li:before {
+  content: "-";
+  color: #b82525;
+  position: relative;
+  left: -20px;
+}
+.reveal section ul.with-pics li {
+  margin-bottom: 20px;
+}
+.reveal section ul.with-pics li img {
+  height: 40px;
+}
 
-.reveal section .highlighted {
-  color: #b82525; }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -34,8 +34,65 @@
       color: $raisin_black;
     }
 
-    .highlighted {
+    .accent {
       color: $red;
     }
+
+    &.title-slide {
+      h3 {
+        padding-bottom: 10px;
+      }
+      .and {
+        font-size: 1em;
+        padding-bottom: 20px;
+      }
+      img {
+        width: 310px;
+      }
+    }
+
+    &.has-dark-background {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      & {
+        color: white;
+      }
+    }
+
+    ul {
+      font-weight: 100;
+      font-size: 0.7em;
+      color: $raisin_black;
+      padding-left: 25px;
+      font-family: "papaya_sunriseregular", serif;
+      list-style: none;
+      li:before {
+        content: "-";
+        color: $red;
+        position: relative;
+        left: -20px;
+        // font-size: 1.8em;
+      }
+    }
+    ul.with-pics {
+      li {
+        margin-bottom: 20px;
+        img {
+          height: 40px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

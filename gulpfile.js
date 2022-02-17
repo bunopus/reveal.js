@@ -159,7 +159,7 @@ gulp.task('plugins', () => {
 
 
 gulp.task('css-custom', () => gulp.src(['css/custom.scss'])
-    .pipe(sass())
+    .pipe(compileSass())
     .pipe(gulp.dest('./dist')))
 
 gulp.task('css-themes', () => gulp.src(['./css/theme/source/*.{sass,scss}'])
