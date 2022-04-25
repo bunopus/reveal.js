@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>YOUR NAME HERE</title>
+	<title>Oak's lab</title>
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
@@ -22,38 +22,66 @@
 <body>
 	<div class="reveal">
 		<div class="slides">
-			<section data-background="#FFFFFF"><img class="fragment" data-duration="2" data-animate="fadeIn"
-					src="img/ministry.png"></section>
+			<section data-background-transition="fade" data-transition="fade" class="title-slide" data-auto-animate>
+				<h3>Evgeny kot</h3>
+				<div class="and">and</div>
+				<div><img src="img/logo.svg"></div>
+			</section>
+			<section data-background-transition="fade" data-transition="fade" class="title-slide"
+				data-background-color="black" data-auto-animate>
+				<h3>Evgeny kot</h3>
+				<div class="and">and</div>
+				<div><img src="img/logo.svg"></div>
+			</section>
+			<section data-auto-animate>
+				<div style="display: flex; justify-content: center">
+					<div style="width: 250px; animation: spin 20s linear infinite"><img src="img/evgeny.png"></div>
+				</div>
+			</section>
+			<section data-auto-animate>
+				<div style="display: flex; justify-content: center; margin-bottom:30px">
+					<div style="width: 150px; animation: spin 20s linear infinite"><img src="img/evgeny.png"></div>
+				</div>
+				<ul class="with-pics">
+					<li class="fragment">
+						16 years in field
+					</li>
+					<li class="fragment"><img src="img/google.png"> GDE</li>
+					<li class="fragment"><img src="img/lang.png"></li>
+					<li class="fragment">Dir. of development <img src="img/wrike.png"></li>
+					<li class="fragment"><img src="img/psy.png"></li>
+				</ul>
 			</section>
 		</div>
 
-	<script src="dist/reveal.js"></script>
-	<script src="plugin/notes/notes.js"></script>
-	<script src="plugin/markdown/markdown.js"></script>
-	<script src="plugin/highlight/highlight.js"></script>
-	<script>
-		// More info about initialization & config:
-		// - https://revealjs.com/initialization/
-		// - https://revealjs.com/config/
-		Reveal.initialize({
-			hash: true,
-			progress: false,
-			controls: false,
-			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-			dependencies: [
-				{ src: 'node_modules/jquery/dist/jquery.min.js' },
-				{ src: 'plugin/animations/animations.js' },
-				{ src: 'plugin/alt-arrows/alt-arrows.js', async: true },
-				{ src: 'plugin/blur-background/blur-background.js' },
-				{ src: 'plugin/loader-splashscreen/loader-splashscreen.js' },
-			],
-			keyboard: {
-				39: 'next',
-				37: 'prev'
-			}
-		});
-	</script>
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				progress: false,
+				controls: false,
+				transition: "fade",
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+				dependencies: [
+					{ src: 'node_modules/jquery/dist/jquery.min.js' },
+					{ src: 'plugin/animations/animations.js' },
+					{ src: 'plugin/alt-arrows/alt-arrows.js', async: true },
+					{ src: 'plugin/blur-background/blur-background.js' },
+					{ src: 'plugin/loader-splashscreen/loader-splashscreen.js' },
+				],
+				keyboard: {
+					39: 'next',
+					37: 'prev'
+				}
+			});
+		</script>
 </body>
 
 </html>
