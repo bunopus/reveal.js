@@ -1,3 +1,6 @@
+const animate_prefix = "animate__";
+const animate_keyword = animate_prefix + "animated";
+
 // Set animation delay if data-delay is specified
 Reveal.addEventListener('ready', function ( event ) {
     $('*[data-delay]').each( function () {
@@ -16,18 +19,25 @@ Reveal.addEventListener('ready', function ( event ) {
     });
 });
 
+// Set animation count if data-count is specified
+Reveal.addEventListener('ready', function ( event ) {
+    $('*[data-count]').each( function () {
+        var count = $(this).attr("data-count");
+        $(this).css("animation-iteration-count", count);
+    });
+});
+
 // Animate items that are not in a fragment
 Reveal.addEventListener('slidechanged', function( event ) {
     // Animate elements that are not a fragment (or in a fragment)
     var filter = '*[data-animate]:not(.fragment):not(.fragment *)';
-
     $(event.currentSlide).find(filter).each( function () {
-        $(this).addClass('animated');
-        $(this).addClass($(this).attr('data-animate'));
+        $(this).addClass(animate_keyword);
+        $(this).addClass(animate_prefix + $(this).attr('data-animate'));
     });
     $(event.previousSlide).find(filter).each( function () {
-        $(this).removeClass('animated');
-        $(this).removeClass($(this).attr('data-animate'));
+        $(this).removeClass(animate_keyword);
+        $(this).removeClass(animate_prefix + $(this).attr('data-animate'));
     });
 });
 
@@ -35,8 +45,8 @@ Reveal.addEventListener('slidechanged', function( event ) {
 Reveal.addEventListener('fragmentshown', function( event ) {
     function loop(i, el) {
         if ($(el).attr('data-animate')) {
-            $(el).addClass('animated');
-            $(el).addClass($(el).attr('data-animate'));
+            $(el).addClass(animate_keyword);
+            $(el).addClass(animate_prefix + $(el).attr('data-animate'));
         }
         $.each($(el).children().not('.fragment'), loop);
     };
@@ -47,8 +57,8 @@ Reveal.addEventListener('fragmentshown', function( event ) {
 Reveal.addEventListener('fragmenthidden', function( event ) {
     function loop(i, el) {
         if ($(el).attr('data-animate')) {
-            $(el).removeClass('animated');
-            $(el).removeClass($(el).attr('data-animate'));
+            $(el).removeClass(animate_keyword);
+            $(el).removeClass(animate_prefix + $(el).attr('data-animate'));
         }
         $.each($(el).children().not('.fragment'), loop);
     };
