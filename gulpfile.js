@@ -178,6 +178,7 @@ function compileSass() {
         if( err ) {
             console.log( vinylFile.path );
             console.log( err.formatted );
+            callback( null, null );
         }
         else {
             transformedFile.extname = '.css';

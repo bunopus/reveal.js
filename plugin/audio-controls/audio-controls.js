@@ -3,7 +3,7 @@
  *
  * @author bunopus
  */
-let RevealAudioController = window.RevealAudioController || (function () {
+ let RevealAudioController = window.RevealAudioController || (function () {
 
     // Reveal.addEventListener('slidechanged', function (event) {
     //     _onEvent('slidechanged', event)
@@ -29,9 +29,16 @@ let RevealAudioController = window.RevealAudioController || (function () {
         let attributes = subject.attributes;
         let action = attributes["data-audio-command"]?.value;
         let target = attributes["data-audio-target"]?.value;
+        let target2 = attributes["data-audio-target-2"]?.value;
         switch (action) {
+            case 'play':
+                play(target);
+                break;
             case 'fade-out':
                 fadeOut(target);
+                break;
+            case 'mix-two':
+                mixTwo(target, target2);
                 break;
         }
 
@@ -43,13 +50,24 @@ function fadeOut(target) {
     _fadeOutCallback(audio);
 }
 
-function _fadeOutCallback(audio) {
+function _fadeOutCallback(audio, delay = 100) {
     if (audio.volume > 0.1) {
         audio.volume -= 0.1;
-        console.log(audio.volume);
-        setTimeout(() => _fadeOutCallback(audio), 100);
+        setTimeout(() => _fadeOutCallback(audio, delay), delay);
     } else {
         audio.pause()
         audio.volume = 1;
     }
+}
+
+function mixTwo(target, target2) {
+    const audio1 = $(target)[0];
+    const audio2 = $(target2)[0];
+    audio2.play();
+    _fadeOutCallback(audio1, 500);
+}
+
+function play(target) {
+    const audio1 = $(target)[0];
+    audio1.play();
 }
